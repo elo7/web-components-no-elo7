@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>Usando Web Components no Elo7</title>
+
+		<meta name="description" content="Como usamos Web Components no Elo7 para resolver problemas de escopo e reaproveitamento de código">
+		<meta name="author" content="Luiz Corte Real">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/customize.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Web Components<br>@ Elo7</h1>
+					<p>Luiz Corte Real</p>
+					<small>luiz.real@elo7.com</small>
+				</section>
+				<section>
+					<section>
+						<h2>O que são?</h2>
+						<small>(onde vivem, o que comem)</small>
+					</section>
+					<section>
+						<h2>4 specs, na verdade</h2>
+						<ul>
+							<li>
+								<figure>
+									<img src="" alt="">
+									<figcaption>Custom Elements</figcaption>
+								</figure>
+							</li>
+							<li>
+								<figure>
+									<img src="" alt="">
+									<figcaption>Shadow DOM</figcaption>
+								</figure>
+							</li>
+						</ul>
+						<ul class="fragment fade-out">
+							<li>
+								<figure>
+									<img src="" alt="">
+									<figcaption>HTML Imports</figcaption>
+								</figure>
+							</li>
+							<li>
+								<figure>
+									<img src="" alt="">
+									<figcaption>Templates</figcaption>
+								</figure>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Custom Elements</h2>
+						<p>&lt;<span class="fragment highlight-red">minha-</span>tag /&gt;</p>
+						<p class="fragment"><span class="faded">document.</span>registerElement<span class="faded">('minha-tag',</span> <span class="fragment highlight-blue">{...}</span>)</p>
+					</section>
+					<section>
+						<h2>Custom Elements</h2>
+<pre><span class="faded">document.registerElement({</span>
+	teste: ok <!-- TODO continuar -->
+<span class="faded">});</span></pre>
+					</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
