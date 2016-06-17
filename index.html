@@ -76,9 +76,18 @@
 					</section>
 					<section>
 						<h2>Custom Elements</h2>
-<pre><span class="faded">document.registerElement({</span>
-	teste: ok <!-- TODO continuar -->
-<span class="faded">});</span></pre>
+<pre><span class="faded">document.registerElement(</span><span class="blue">{</span>
+	createdCallback() {...},
+	attachedCallback() {...},
+	detachedCallback() {...},
+	attributeChangedCallback() {...}
+<span class="blue">}</span><span class="faded">);</span></pre>
+					</section>
+					<section>
+						<h2>Shadow DOM</h2>
+						<img src="img/shadow-root.png" alt="Shadow DOM no inspetor do navegador">
+						<p>DOM dentro de DOM</p>
+						<a href="shadow-dom-demo.html" target="demo1" class="btn">Demo</a>
 					</section>
 				</section>
 			</div>
