@@ -86,8 +86,80 @@
 					<section>
 						<h2>Shadow DOM</h2>
 						<img src="img/shadow-root.png" alt="Shadow DOM no inspetor do navegador">
-						<p>DOM dentro de DOM</p>
-						<a href="shadow-dom-demo.html" target="demo1" class="btn">Demo</a>
+						<p>DOM dentro de DOM <span class="fragment fade-right red">⇒ encapsulamento!</span></p>
+						<a href="demos/shadow-dom.html" target="demo1" class="fragment btn">Demo</a>
+					</section>
+				</section>
+				<section>
+					<h2>Exemplo</h2>
+<pre><code class="hljs html">&lt;html-gl&gt;
+	&lt;li class="broadcast"&gt;
+		&lt;div class="image_background"&gt;&lt;/div&gt;
+		&lt;img src="./pic/boxes/box_argo.png"&gt;
+		&lt;p&gt;
+			Select me with DevTools
+		&lt;/p&gt;
+		&lt;p&gt;
+			&lt;img src="./assets/img/imdb.png"&gt;
+			&lt;span&gt;7.8&lt;span&gt;/10&lt;/span&gt;&lt;/span&gt;
+		&lt;/p&gt;
+	&lt;/li&gt;
+&lt;/html-gl&gt;
+</code></pre>
+					<a class="btn" href="http://pixelscommander.com/polygon/htmlgl/demo/filters.html">Demo</a>
+				</section>
+				<section>
+					<section>
+						<h2>Suporte</h2>
+						<img src="img/browser-support.png" alt="Suporte às specs de Web Components pelos navegadores. Apenas Chrome e Opera suportam tudo">
+						<p><small>Fonte: <a href="http://webcomponents.org/">webcomponents.org</a></small></p>
+					</section>
+					<section>
+						<h2>Bibliotecas</h2>
+						<img src="img/libs.png" alt="Bibliotecas que facilitam o desenvolvimento com WebComponents" style="max-height: 50vh">
+						<p><small>Fonte: <a href="http://webcomponents.org/">webcomponents.org</a></small></p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Mas...</h1>
+						<p>não estamos aqui para falar de libs</p>
+						<p class="fragment fade-up">ou de interfaces ultra sofisticadas</p>
+					</section>
+					<section>
+						<h1>Web Components<br>@ Elo7</h1>
+						<p>para solucionar problemas comuns</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Nosso problema</h2>
+						<p style="text-align: left; display: inline-block; vertical-align: middle; width: 70%">Componentes de interface <strong>realmente</strong> isolados</p>
+						<img src="img/componente.png" alt="" style="display: inline-block; vertical-align: middle; max-width: 25%">
+					</section>
+					<section>
+						<h3>Ideia #1: iframe</h3>
+<pre><code class="hljs html">&lt;iframe src="meucomponente.html"&gt;&lt;/iframe&gt;
+</code></pre>
+						<p><code>&lt;iframe&gt;</code> é um container isolado!</p>
+					</section>
+					<section>
+						<h3>Ideia #1: iframe</h3>
+						<img src="img/iframe.png" alt="Componente com barra de rolagem">
+						<p><strong>Problema:</strong> integração no layout</p>
+						<p class="fragment fade-in">JS resolve, mas e o <em>progressive enhancement</em>?</p>
+					</section>
+					<section>
+						<h3>Ideia #2: nomenclatura</h3>
+						<p><code>elo7-chat__bubble</code> no CSS</p>
+						<p><code>Elo7.Chat.Bubble</code> no JS</p>
+						<p>...</p>
+						<img src="img/sad.png" alt="Triste" class="fragment fade-in no-frame">
+						<img src="img/scared.png" alt="Problemas inesperados" class="fragment fade-in no-frame">
+					</section>
+					<section>
+						<h3>Ideia #3: Shadow DOM</h3>
+						<img src="img/shadow-root.png" alt="Shadow root no inspetor do navegador">
 					</section>
 				</section>
 			</div>

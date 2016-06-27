@@ -4,11 +4,17 @@
 .blue {
 	color: #1b91ff;
 }
+.red {
+	color: #ff2c2d;
+}
 .reveal pre {
 	padding: 1em;
 	background-color: rgba(255,255,255,.05);
 	tab-size: 4;
 	width: 75%;
+}
+.reveal pre code {
+	background-color: transparent;
 }
 .reveal .btn {
 	display: inline-block;
@@ -21,4 +27,9 @@
 .reveal .btn:hover {
 	color: #fff;
 	background-color: #8dcffc;
+}
+.reveal img.no-frame {
+	box-shadow: none;
+	border: none;
+	background: none;
 }
