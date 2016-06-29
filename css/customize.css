@@ -28,8 +28,10 @@
 	color: #fff;
 	background-color: #8dcffc;
 }
-.reveal img.no-frame {
+.reveal img.bullet-img {
 	box-shadow: none;
 	border: none;
 	background: none;
+	height: 2em;
+	vertical-align: middle;
 }

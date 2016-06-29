@@ -133,6 +133,48 @@
 				</section>
 				<section>
 					<section>
+						<h2>Uma breve história do tempo...</h2>
+						<p class="fragment fade-up">v1 ⇒ Raça</p>
+						<p class="fragment fade-up">v2 ⇒ Bootstrap-like</p>
+						<p class="fragment fade-up">v3 ⇒ Elo7 Bootstrap</p>
+					</section>
+					<section data-background="img/elo7-bootstrap.png">
+					</section>
+					<section>
+						<h2>Componentes no servidor</h2>
+<pre><code class="hljs xml">&lt;desktop:sidebar links="${links}" active="Meu perfil"/&gt;</code></pre>
+						<div class="fragment fade-up">
+							<p>⟱</p>
+<pre><code class="hljs html">&lt;nav class="links"&gt;
+	&lt;a class="link active" href="#" title="Meu perfil"&gt;
+		Meu perfil
+	&lt;/a&gt;
+	&lt;a class="link " href="#" title="Conta"&gt;
+		Conta
+	&lt;/a&gt;
+	&lt;a class="link " href="#" title="Loja"&gt;
+		Loja
+	&lt;/a&gt;
+&lt;/nav&gt;
+</code></pre>
+						</div>
+					</section>
+					<section>
+<pre><code class="hljs html">&lt;desktop:page css="saleConversation" jsFiles="..."&gt;
+	&lt;section class='order-detail'&gt;
+		&lt;desktop:headerDetails user="..."/&gt;
+		&lt;order:buyerDetail order="..."/&gt;
+	&lt;/section&gt;
+	&lt;desktop:saleConversationBox&gt;
+		&lt;desktop:saleConversation messages="..."/&gt;
+	&lt;/desktop:saleConversationBox&gt;
+&lt;/desktop:page&gt;
+</code></pre>
+						<p class="fragment fade-in"><strong class="fragment fade-in">Parece</strong> isolado</p>
+					</section>
+				</section>
+				<section>
+					<section>
 						<h2>Nosso problema</h2>
 						<p style="text-align: left; display: inline-block; vertical-align: middle; width: 70%">Componentes de interface <strong>realmente</strong> isolados</p>
 						<img src="img/componente.png" alt="" style="display: inline-block; vertical-align: middle; max-width: 25%">
@@ -154,8 +196,12 @@
 						<p><code>elo7-chat__bubble</code> no CSS</p>
 						<p><code>Elo7.Chat.Bubble</code> no JS</p>
 						<p>...</p>
-						<img src="img/sad.png" alt="Triste" class="fragment fade-in no-frame">
-						<img src="img/scared.png" alt="Problemas inesperados" class="fragment fade-in no-frame">
+					</section>
+					<section>
+						<h3>Ideia #2: nomenclatura</h3>
+						<h4>Problemas</h4>
+						<p class="fragment fade-up"><img src="img/sad.png" alt="Triste" class="bullet-img"> Equipe triste</p>
+						<p class="fragment fade-up"><img src="img/scared.png" alt="Problemas inesperados" class="bullet-img"> Não resolve todos os problemas</p>
 					</section>
 					<section>
 						<h3>Ideia #3: Shadow DOM</h3>
