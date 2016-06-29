@@ -1,0 +1,6 @@
+#container {
+	border: 3px solid gray;
+	overflow-x: auto;
+	overflow-y: hidden;
+	white-space: nowrap;
+}

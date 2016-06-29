@@ -10,7 +10,7 @@
 		<meta name="author" content="Luiz Corte Real">
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/night.css">
 		<link rel="stylesheet" href="css/customize.css">
 
 		<!-- Theme used for syntax highlighting of code -->
@@ -37,6 +37,7 @@
 					<section>
 						<h2>O que são?</h2>
 						<small>(onde vivem, o que comem)</small>
+						<p><img class="fragment" src="img/globo-reporter.gif" alt="Hoje, no Globo Repórter"></p>
 					</section>
 					<section>
 						<h2>4 specs, na verdade</h2>
@@ -87,7 +88,7 @@
 						<h2>Shadow DOM</h2>
 						<img src="img/shadow-root.png" alt="Shadow DOM no inspetor do navegador">
 						<p>DOM dentro de DOM <span class="fragment fade-right red">⇒ encapsulamento!</span></p>
-						<a href="demos/shadow-dom.html" target="demo1" class="fragment btn">Demo</a>
+						<a href="demos/shadow-dom.html" target="demo-shadow" class="fragment btn">Demo</a>
 					</section>
 				</section>
 				<section>
@@ -106,7 +107,7 @@
 	&lt;/li&gt;
 &lt;/html-gl&gt;
 </code></pre>
-					<a class="btn" href="http://pixelscommander.com/polygon/htmlgl/demo/filters.html">Demo</a>
+					<a class="btn" target="demo-gl" href="http://pixelscommander.com/polygon/htmlgl/demo/filters.html">Demo</a>
 				</section>
 				<section>
 					<section>
@@ -216,10 +217,35 @@
 							<li class="fragment fade-in">Depende de JavaScript</li>
 						</ul>
 						<blockquote class="fragment fade-up">
-							<p><img class="bullet-img" src="img/sunglasses.png" alt=""> Ok, we can deal with that</p>
+							<p><img class="bullet-img" src="img/sunglasses.png" alt=""> Ok, we can deal with that <strong class="fragment fade-in red" style="font-size:2em;vertical-align:middle">?</strong></p>
 						</blockquote>
 					</section>
+					<section>
+						<h2>Web Components <span class="fragment highlight-blue">podem</span> ser <em>progressively enhanced</em></h2>
+					</section>
 				</section>
+				<section>
+					<section>
+<pre><code class="hljs html">&lt;g-map lat="23.45" lon="67.89"&gt;&lt;/g-map&gt;</code></pre>
+						<strong class="fragment red">não</strong> ❤ progressive enhancement
+					</section>
+					<section>
+<pre><code class="hljs html">&lt;img-slider&gt;
+	&lt;img src="foto1.jpg"&gt;
+	&lt;img src="foto2.jpg"&gt;
+	&lt;img src="foto3.jpg"&gt;
+&lt;/img-slider&gt;
+</code></pre>
+						<p><strong class="fragment highlight-green">❤</strong> progressive enhancement</p>
+						<a href="demos/img-slider.html" target="img-slider-demo" class="btn fragment">Demo</a>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Web Components @ Elo7</h2>
+					</section>
+				</section>
+				<!-- para depois: https://github.com/WebComponents/webcomponentsjs#limited-css-encapsulation- -->
 			</div>
 		</div>
 
