@@ -244,6 +244,74 @@
 					<section>
 						<h2>Web Components @ Elo7</h2>
 					</section>
+					<section>
+<pre style="display: inline-block; vertical-align: middle; max-width: 50%; margin-right: 2em">
+<code class="hljs html">&lt;w7-component&gt;
+	&lt;link rel='stylesheet' href='...'&gt;
+	&lt;link rel='stylesheet' href='...'&gt;
+	&lt;div class='conversation-content'&gt;
+			&lt;ol class='conversation'&gt;
+				&lt;!-- ... --&gt;
+			&lt;/ol&gt;
+	&lt;/div&gt;
+	&lt;script src='...'&gt;&lt;/script&gt;
+	&lt;script src='...'&gt;&lt;/script&gt;
+	&lt;script src='...'&gt;&lt;/script&gt;
+&lt;/w7-component&gt;
+</code></pre>
+						<img src="img/conversa.png" alt="" style="display: inline-block; vertical-align: middle; max-width: 25%">
+					</section>
+					<section data-background="img/w7.png">
+					</section>
+					<section>
+						<pre><code class="hljs javascript">
+var proto = Object.create(HTMLElement.prototype);
+
+proto.attachedCallback = function() {
+	var self = this;
+	if (document.readyState === 'complete') {
+		activateShadowDom(self);
+	} else {
+		document.addEventListener('DOMContentLoaded', function() {
+			activateShadowDom(self);
+		}, false);
+	}
+};
+
+if (supportsCustomElements()) {
+	document.registerElement('w7-component', { prototype: proto });
+}
+						</code></pre>
+						<code class="fragment">activateShadowDom(HTMLElement)</code>
+					</section>
+					<section>
+						<pre><code class="hljs javascript">
+function activateShadowDom(el) {
+	var root = el.createShadowRoot(),
+		children = el.children;
+
+	for (var i = 0, max = children.length; i < max; i++) {
+		var child = children[i];
+		if (isCSS(child)) {
+			deactivateCSS(child);
+			root.appendChild(transformCSSToImport(child));
+		} else {
+			root.appendChild(children[i].cloneNode(true));
+		}
+	}
+}
+						</code></pre>
+					</section>
+					<section class="comparativo">
+						<figure>
+							<img src="img/conversa-sem-js.png" alt="">
+							<figcaption>Sem JS</figcaption>
+						</figure>
+						<figure>
+							<img src="img/conversa.png" alt="">
+							<figcaption>Com JS</figcaption>
+						</figure>
+					</section>
 				</section>
 				<!-- para depois: https://github.com/WebComponents/webcomponentsjs#limited-css-encapsulation- -->
 			</div>

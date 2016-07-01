@@ -38,3 +38,17 @@
 .reveal small {
 	vertical-align: baseline;
 }
+.reveal section .comparativo figure {
+	max-width: 40%;
+	max-height: 60vh;
+	display: inline-block;
+}
+
+.reveal section .comparativo figure:nth-child(n+2) {
+	margin-left: 2%;
+}
+
+.reveal section .comparativo figure img {
+	max-width: 100%;
+	max-height: 100%;
+}
