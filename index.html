@@ -31,7 +31,6 @@
 				<section>
 					<h1>Web Components<br>@ Elo7</h1>
 					<p>Luiz Corte Real</p>
-					<small>luiz.real@elo7.com</small>
 				</section>
 				<section>
 					<section>
@@ -278,9 +277,7 @@ proto.attachedCallback = function() {
 	}
 };
 
-if (supportsCustomElements()) {
-	document.registerElement('w7-component', { prototype: proto });
-}
+document.registerElement('w7-component', { prototype: proto });
 						</code></pre>
 						<code class="fragment">activateShadowDom(HTMLElement)</code>
 					</section>
@@ -290,7 +287,7 @@ function activateShadowDom(el) {
 	var root = el.createShadowRoot(),
 		children = el.children;
 
-	for (var i = 0, max = children.length; i < max; i++) {
+	for (var i = 0, max = children.length; i &lt; max; i++) {
 		var child = children[i];
 		if (isCSS(child)) {
 			deactivateCSS(child);
@@ -302,6 +299,11 @@ function activateShadowDom(el) {
 }
 						</code></pre>
 					</section>
+				</section>
+				<section>
+					<section>
+						<h1>O resultado</h1>
+					</section>
 					<section class="comparativo">
 						<figure>
 							<img src="img/conversa-sem-js.png" alt="">
@@ -312,6 +314,179 @@ function activateShadowDom(el) {
 							<figcaption>Com JS</figcaption>
 						</figure>
 					</section>
+					<section class="comparativo">
+						<h2>CSS</h2>
+						<figure>
+							<pre><code class="hljs css">w7-component {
+	...
+}
+.attachment {
+	...
+}
+							</code></pre>
+							<figcaption>Elo7</figcaption>
+						</figure>
+						<figure>
+							<pre><code class="hljs css">.bubble {
+	...
+}
+.attachment {
+	...
+}
+							</code></pre>
+							<figcaption>Componente</figcaption>
+						</figure>
+						<p class="fragment red">Não funciona sempre :(</p>
+					</section>
+					<section class="comparativo">
+						<h2>CSS</h2>
+						<figure>
+							<pre><code class="hljs css">w7-component {
+	...
+}
+w7-component .attachment {
+	...
+}
+:not(w7-component) .bubble {
+	...
+}
+							</code></pre>
+							<figcaption>Elo7</figcaption>
+						</figure>
+						<figure>
+							<pre><code class="hljs css">.bubble {
+	...
+}
+.attachment {
+	...
+}
+							</code></pre>
+							<figcaption>Componente</figcaption>
+						</figure>
+					</section>
+					<section>
+						<h2>No futuro</h2>
+						<small>(quando todos suportarem Shadow DOM)</small>
+						<pre><code class="hljs css">w7-component {
+	...
+}
+						</code></pre>
+						<p>+ (num <code>&lt;link&gt;</code> dentro de um <code>&lt;noscript&gt;</code>)</p>
+						<pre><code class="hljs css">w7-component .attachment {
+	...
+}
+:not(w7-component) .bubble {
+	...
+}
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>JS</h2>
+						<p>No componente:</p>
+						<pre><code class="hljs javascript">onComponentLoaded(['ajax', 'zoom'], function(component, ajax, zoom) {
+	var root = component.get();
+	var forms = root.querySelectorAll('form');
+	// ...
+	zoom.on('close', function() {
+		component.remove();
+	});
+}
+						</code></pre>
+						<h3 class="fragment">Isolamento do DOM</h3>
+					</section>
+					<section>
+						<h2>JS</h2>
+						<p>No registrador do componente:</p>
+						<pre><code class="hljs javascript">window.onComponentLoaded = function(deps, callback) {
+	// 1. detectar tag do componente
+	// 2. executar callback após carregamento das dependências
+};
+						</code></pre>
+					</section>
+					<section>
+						<h2>JS</h2>
+						<p>No registrador do componente:</p>
+						<pre><code class="hljs javascript">window.onComponentLoaded = function(deps, callback) {
+	var scriptTags = document.querySelectorAll(
+			'w7-component &gt; script:not([data-executed])');
+	var component = new Component(scriptTags[0].parentNode);
+
+	for (var i = 0; i &lt; scriptTags.length; i++) {
+		var scriptTag = scriptTags[i];
+		scriptTag.setAttribute('data-executed', '');
+	}
+	// 2. executar callback após carregamento das dependências
+};
+						</code></pre>
+					</section>
+					<section>
+						<h2>JS</h2>
+						<p>No registrador do componente:</p>
+						<pre><code class="hljs javascript">window.onComponentLoaded = function(deps, callback) {
+	var scriptTags = document.querySelectorAll(
+			'w7-component &gt; script:not([data-executed])');
+	var component = new Component(scriptTags[0].parentNode);
+
+	for (var i = 0; i &lt; scriptTags.length; i++) {
+		var scriptTag = scriptTags[i];
+		scriptTag.setAttribute('data-executed', '');
+	}
+
+	define(deps, function() {
+		var loadedDeps = Array.prototype.slice.call(arguments);
+		loadedDeps.unshift(component);
+		callback.apply(null, loadedDeps);
+	});
+};
+						</code></pre>
+						<small class="fragment">+ checagens de suporte a Web Components e setTimeouts</small>
+					</section>
+					<section class="comparativo">
+						<h2>JS</h2>
+						<p>Mas...</p>
+						<figure>
+							<pre><code class="hljs html">&lt;w7-component&gt;
+	&lt;-- CSS, HTML --&gt;
+	&lt;script src='doc-1.1.js'&gt;
+	&lt;/script&gt;
+&lt;/w7-component&gt;
+							</code></pre>
+							<figcaption>Componente B<br>
+								<small>(doc-amd v1.1)</small>
+							</figcaption>
+						</figure>
+						<figure>
+							<pre><code class="hljs html">&lt;w7-component&gt;
+	&lt;-- CSS, HTML --&gt;
+	&lt;script src='doc-2.0.js'&gt;
+	&lt;/script&gt;
+&lt;/w7-component&gt;
+							</code></pre>
+							<figcaption>Componente B<br>
+								<small>(doc-amd v2.0)</small>
+							</figcaption>
+						</figure>
+						<p class="fragment red boom">Boom!</p>
+						<small class="fragment">(escopo JS continua global)</small>
+					</section>
+				</section>
+				<section>
+					<h1>Resumão</h1>
+					<ol>
+						<li class="fragment">Shadow DOM é massa</li>
+						<li class="fragment">Custom Elements é massa</li>
+						<li class="fragment">Web Components ❤ progressive enhancement</li>
+						<li class="fragment">Ainda falta algo para escopo JS</li>
+					</ol>
+				</section>
+				<section>
+					<h1>Obrigado!</h1>
+					<p>Luiz Corte Real</p>
+					<small class="contato">luiz.real@elo7.com</small>
+					<small class="contato">@srsaude</small>
+					<p><small class="fragment yellow">Slides online: elo7.github.io/web-components-no-elo7</small></p>
 				</section>
 				<!-- para depois: https://github.com/WebComponents/webcomponentsjs#limited-css-encapsulation- -->
 			</div>
