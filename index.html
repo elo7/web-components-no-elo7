@@ -72,7 +72,7 @@
 					<section>
 						<h2>Custom Elements</h2>
 						<p>&lt;<span class="fragment highlight-red">minha-</span>tag /&gt;</p>
-						<p class="fragment"><span class="faded">document.</span>registerElement<span class="faded">('minha-tag',</span> <span class="fragment highlight-blue">{...}</span>)</p>
+						<p class="fragment"><span class="faded">document.</span>registerElement<span class="faded">('minha-tag',</span> <span class="blue">{...}</span>)</p>
 					</section>
 					<section>
 						<h2>Custom Elements</h2>
@@ -84,14 +84,7 @@
 <span class="blue">}</span><span class="faded">);</span></pre>
 					</section>
 					<section>
-						<h2>Shadow DOM</h2>
-						<img src="img/shadow-root.png" alt="Shadow DOM no inspetor do navegador">
-						<p>DOM dentro de DOM <span class="fragment fade-right red">⇒ encapsulamento!</span></p>
-						<a href="demos/shadow-dom.html" target="demo-shadow" class="fragment btn">Demo</a>
-					</section>
-				</section>
-				<section>
-					<h2>Exemplo</h2>
+						<h2>Exemplo</h2>
 <pre><code class="hljs html">&lt;html-gl&gt;
 	&lt;li class="broadcast"&gt;
 		&lt;div class="image_background"&gt;&lt;/div&gt;
@@ -106,7 +99,14 @@
 	&lt;/li&gt;
 &lt;/html-gl&gt;
 </code></pre>
-					<a class="btn" target="demo-gl" href="http://pixelscommander.com/polygon/htmlgl/demo/filters.html">Demo</a>
+						<a class="btn" target="demo-gl" href="http://pixelscommander.com/polygon/htmlgl/demo/filters.html">Demo</a>
+					</section>
+					<section>
+						<h2>Shadow DOM</h2>
+						<img src="img/shadow-root.png" alt="Shadow DOM no inspetor do navegador">
+						<p>DOM dentro de DOM <span class="fragment fade-right red">⇒ encapsulamento!</span></p>
+						<a href="demos/shadow-dom.html" target="demo-shadow" class="fragment btn">Demo</a>
+					</section>
 				</section>
 				<section>
 					<section>
@@ -373,8 +373,7 @@ w7-component .attachment {
 						<small>(quando todos suportarem Shadow DOM)</small>
 						<pre><code class="hljs css">w7-component {
 	...
-}
-						</code></pre>
+}</code></pre>
 						<div class="fragment">
 							<p>+ (num <code>&lt;link&gt;</code> dentro de um <code>&lt;noscript&gt;</code>)</p>
 							<pre><code class="hljs css">w7-component .attachment {

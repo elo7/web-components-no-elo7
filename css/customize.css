@@ -19,6 +19,7 @@
 }
 .reveal pre code {
 	background-color: transparent;
+	overflow: hidden;
 }
 .reveal .btn {
 	display: inline-block;
