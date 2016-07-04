@@ -15,6 +15,7 @@
 	background-color: rgba(255,255,255,.05);
 	tab-size: 4;
 	width: 75%;
+	font-size: 0.75em;
 }
 .reveal pre code {
 	background-color: transparent;
@@ -40,6 +41,7 @@
 }
 .reveal small {
 	vertical-align: baseline;
+	font-size: 0.75em;
 }
 .reveal section .comparativo figure {
 	max-width: 40%;
